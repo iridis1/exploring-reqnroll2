@@ -9,5 +9,6 @@ Scenario: User creation
 		| username | firstName | lastName | email          | password | phone       |
 		| liz      | Lizzie    | Bishop   | lizzie@test.nl | 123456   | 06-90909090 |
 	When the account details are requested
-	Then details match
+	Then the account details match
 	And an id has been assigned
+

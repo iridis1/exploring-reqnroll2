@@ -132,7 +132,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("the account details are requested", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 12
- await testRunner.ThenAsync("the entered details are returned", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("the account details match", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 13
  await testRunner.AndAsync("an id has been assigned", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

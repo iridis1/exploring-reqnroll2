@@ -7,8 +7,8 @@ namespace ExploringReqnroll.StepDefinitions
     public class UsersStepDefinitions
     {
         private PetstoreClient _client;
-        private User _user;
-        private User _createdUser;
+        private User? _user;
+        private User? _createdUser;
 
         public UsersStepDefinitions()
         {
@@ -29,7 +29,7 @@ namespace ExploringReqnroll.StepDefinitions
             _createdUser = await _client.GetUserByNameAsync(_user.Username);
         }
 
-        [Then("the entered (account )details match")]
+        [Then("the (account )details match")]
         public void ThenTheEnteredDetailsAreReturned()
         {
             _createdUser.Should().BeEquivalentTo(_user, options => options.Excluding(p => p.Id).Excluding(p => p.UserStatus));
@@ -40,6 +40,12 @@ namespace ExploringReqnroll.StepDefinitions
         {
             _createdUser.Id.Should().NotBeNull();
             _createdUser.Id.Should().BeGreaterThan(0);
+        }
+
+        [Then("the user can login")]
+        public async Task ThenTheUserCanLogin()
+        {
+           await _client.LoginUserAsync(_user.Username, _user.Password);
         }
     }
 }
