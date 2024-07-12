@@ -1,6 +1,3 @@
-using System;
-using System.Net.Http;
-
 namespace ExploringReqnroll.StepDefinitions
 {
     [Binding]
@@ -9,6 +6,7 @@ namespace ExploringReqnroll.StepDefinitions
         private PetstoreClient _client;
         private User? _user;
         private User? _createdUser;
+        private bool _errorOccured = false;
 
         public UsersStepDefinitions()
         {
@@ -26,7 +24,14 @@ namespace ExploringReqnroll.StepDefinitions
         [When("the account details are requested")]
         public async Task WhenTheAccountDetailsAreRequested()
         {
-            _createdUser = await _client.GetUserByNameAsync(_user.Username);
+            try
+            {
+                _createdUser = await _client.GetUserByNameAsync(_user.Username);
+            }
+            catch
+            {
+                // Invalid data
+            }
         }
 
         [Then("the (account )details match")]
@@ -38,14 +43,22 @@ namespace ExploringReqnroll.StepDefinitions
         [Then("an id has been assigned")]
         public void ThenAnIdHasBeenAssigned()
         {
+            _createdUser.Should().NotBeNull();
             _createdUser.Id.Should().NotBeNull();
             _createdUser.Id.Should().BeGreaterThan(0);
         }
 
+        [Then("nothing is returned")]
+        public void ThenNothingIsReturned()
+        {
+            _createdUser.Should().BeNull();
+        }
+
+
         [Then("the user can login")]
         public async Task ThenTheUserCanLogin()
         {
-           await _client.LoginUserAsync(_user.Username, _user.Password);
+            await _client.LoginUserAsync(_user.Username, _user.Password);
         }
     }
 }

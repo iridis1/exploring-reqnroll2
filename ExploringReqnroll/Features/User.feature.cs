@@ -92,16 +92,14 @@ namespace ExploringReqnroll.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User creation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Valid user creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Users")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("tag1")]
-        public async System.Threading.Tasks.Task UserCreation()
+        public async System.Threading.Tasks.Task ValidUserCreation()
         {
-            string[] tagsOfScenario = new string[] {
-                    "tag1"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User creation", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Valid user creation", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -125,17 +123,62 @@ this.ScenarioInitialize(scenarioInfo);
                             "lizzie@test.nl",
                             "123456",
                             "06-90909090"});
-#line 8
+#line 7
  await testRunner.GivenAsync("a new user account is created with the following properties", ((string)(null)), table1, "Given ");
 #line hidden
-#line 11
+#line 10
  await testRunner.WhenAsync("the account details are requested", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 11
  await testRunner.ThenAsync("the account details match", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 13
+#line 12
  await testRunner.AndAsync("an id has been assigned", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Invalid user creation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Users")]
+        public async System.Threading.Tasks.Task InvalidUserCreation()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Invalid user creation", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "username",
+                            "firstName",
+                            "lastName",
+                            "email",
+                            "password",
+                            "phone"});
+                table2.AddRow(new string[] {
+                            "",
+                            "Dizzie",
+                            "Bishop",
+                            "dizzie@test.nl",
+                            "666666",
+                            "06-10101010"});
+#line 15
+ await testRunner.GivenAsync("a new user account is created with the following properties", ((string)(null)), table2, "Given ");
+#line hidden
+#line 18
+ await testRunner.WhenAsync("the account details are requested", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 19
+ await testRunner.ThenAsync("nothing is returned", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
