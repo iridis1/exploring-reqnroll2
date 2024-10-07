@@ -19,7 +19,7 @@
     </PackageReference>
     <PackageReference Include="Reqnroll" Version="2.1.0" />
     <PackageReference Include="Reqnroll.MsTest" Version="2.1.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.5.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.5.2" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
   </ItemGroup>
